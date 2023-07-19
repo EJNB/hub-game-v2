@@ -1,9 +1,10 @@
-export interface FetchGamesResponse {
+export interface Response<T> {
   count: number;
   next: string;
   previous: string;
-  results: Game[];
+  results: T[];
 }
+
 export interface Game {
   id: number;
   slug: string;
