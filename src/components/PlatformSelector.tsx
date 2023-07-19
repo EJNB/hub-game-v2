@@ -9,8 +9,8 @@ interface Props {
 }
 
 export function PlatformSelector({
-  onSelectPlatform,
   selectedPlatform,
+  onSelectPlatform,
 }: Props) {
   const { data: platforms, error } = usePlatforms();
 
