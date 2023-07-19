@@ -3,11 +3,14 @@ import NavBar from "./components/NavBar.tsx";
 import GameGrid from "./components/GameGrid.tsx";
 import GenreList from "./components/GenreList.tsx";
 import { useState } from "react";
-import { Genre } from "./interfaces/response.ts";
-import { PlatformSelected } from "./components/PlatformSelected.tsx";
+import { Genre, Platform } from "./interfaces/response.ts";
+import { PlatformSelector } from "./components/PlatformSelector.tsx";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null,
+  );
 
   return (
     <Grid
@@ -32,8 +35,14 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <PlatformSelected />
-        <GameGrid selectedGenre={selectedGenre} />
+        <PlatformSelector
+          onSelectPlatform={setSelectedPlatform}
+          selectedPlatform={selectedPlatform}
+        />
+        <GameGrid
+          selectedGenre={selectedGenre}
+          selectedPlatform={selectedPlatform}
+        />
       </GridItem>
     </Grid>
   );
