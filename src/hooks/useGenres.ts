@@ -6,6 +6,6 @@ import genres from "../data/genres.ts";
 // const useGenres = () => useData<Genre>("/genres");
 
 // Static version
-const useGenres = () => ({ loading: false, error: null, data: genres });
+const useGenres = () => ({ isLoading: false, error: null, data: genres });
 
 export default useGenres;
