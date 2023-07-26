@@ -1,7 +1,7 @@
 export interface Response<T> {
   count: number;
-  next: string;
-  previous: string;
+  next: number | null;
+  previous: number | null;
   results: T[];
 }
 

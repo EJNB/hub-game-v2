@@ -1,4 +1,3 @@
-// import useData from "./useData.ts";
 import { Platform, Response } from "../interfaces/response.ts";
 import apiClient from "../services/api-client.ts";
 import { useQuery } from "@tanstack/react-query";
