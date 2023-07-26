@@ -17,13 +17,12 @@ interface Props {
 }
 
 const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
-  const { data: genres, isLoading } = useGenres();
-
+  const { data: genres = [], isLoading } = useGenres();
   if (isLoading) return <Spinner />;
 
   return (
     <>
-      <Heading fontSize="2xl" marginBottom={3}>
+      <Heading fontSize="2xl" marginTop={9} marginBottom={3}>
         Genres
       </Heading>
       <List>
