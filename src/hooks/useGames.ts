@@ -3,6 +3,7 @@ import { Response } from "../interfaces/response.ts";
 import { GameQuery } from "../App.tsx";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import gameService from "../services/game-service.ts";
+import ms from "ms";
 
 const useGames = (gameQuery: GameQuery) =>
   useInfiniteQuery<Response<Game>, Error>({
@@ -18,7 +19,7 @@ const useGames = (gameQuery: GameQuery) =>
         },
       }),
     keepPreviousData: true,
-    staleTime: 24 * 60 * 60 * 1000, // 24h
+    staleTime: ms("24h"), // 24h
     // When implement infiniteQuery we should implement this function
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.next ? allPages.length + 1 : undefined;
