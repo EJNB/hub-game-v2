@@ -1,12 +1,14 @@
 import { Game } from "../interfaces/response.ts";
 import { Response } from "../interfaces/response.ts";
-import { GameQuery } from "../App.tsx";
+import useGameQueryStore from "../store.ts";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import gameService from "../services/game-service.ts";
 import ms from "ms";
 
-const useGames = (gameQuery: GameQuery) =>
-  useInfiniteQuery<Response<Game>, Error>({
+const useGames = () => {
+  const gameQuery = useGameQueryStore((state) => state.gameQuery);
+
+  return useInfiniteQuery<Response<Game>, Error>({
     queryKey: ["games", gameQuery],
     queryFn: ({ pageParam = 1 }) =>
       gameService.getAll({
@@ -25,5 +27,5 @@ const useGames = (gameQuery: GameQuery) =>
       return lastPage.next ? allPages.length + 1 : undefined;
     },
   });
-
+};
 export default useGames;
