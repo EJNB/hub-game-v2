@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
 import useGame from "../hooks/useGame.ts";
-import { Box, Heading } from "@chakra-ui/react";
+import { GridItem, Heading, SimpleGrid } from "@chakra-ui/react";
 import ExpandableText from "../components/ExpandableText.tsx";
 import GameAttributes from "../components/GameAttributes.tsx";
-import GameTriller from "../components/GameTriller.tsx";
+import GameTrailer from "../components/GameTriller.tsx";
+import GameScreenShots from "../components/GameScreenShots.tsx";
 
 const GameDetailPage = () => {
   const { id } = useParams();
@@ -13,15 +14,18 @@ const GameDetailPage = () => {
   if (error) return <p>{error.message}</p>;
 
   return (
-    <Box padding={5}>
-      <Heading> {data.name}</Heading>
-      <ExpandableText>{data.description_raw}</ExpandableText>
-      <GameAttributes game={data} />
-      <GameTriller gameId={data.id.toString()} />
-    </Box>
+    <SimpleGrid padding={5} columns={{ base: 1, md: 2 }} spacing={5}>
+      <GridItem>
+        <Heading> {data.name}</Heading>
+        <ExpandableText>{data.description_raw}</ExpandableText>
+        <GameAttributes game={data} />
+      </GridItem>
+      <GridItem>
+        <GameTrailer gameId={data.id.toString()} />
+        <GameScreenShots gameId={data.id.toString()} />
+      </GridItem>
+    </SimpleGrid>
   );
-
-  // return <p>{data?.data.description}</p>;
 };
 
 export default GameDetailPage;
