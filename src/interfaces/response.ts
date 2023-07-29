@@ -15,6 +15,7 @@ export interface Game {
   rating: number;
   rating_top: number;
   ratings: Rating[];
+  description_raw: string;
   ratings_count: number;
   reviews_text_count: number;
   added: number;

@@ -18,4 +18,10 @@ export default class APIClient<T> {
       .get<Response<T>>(this.endpoint, config)
       .then((res) => res.data);
   };
+
+  get = (id: string) => {
+    return axiosInstance
+      .get<T>(this.endpoint + "/" + id)
+      .then((res) => res.data);
+  };
 }
