@@ -1,3 +1,5 @@
+import { Publishers } from "../entities/Publishers.ts";
+
 export interface Response<T> {
   count: number;
   next: number | null;
@@ -34,6 +36,7 @@ export interface Game {
   stores: Store[];
   clip: null;
   tags: Genre[];
+  publishers: Publishers[];
   esrb_rating: EsrbRating;
   short_screenshots: ShortScreenshot[];
 }
