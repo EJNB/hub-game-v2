@@ -3,6 +3,7 @@ import useGame from "../hooks/useGame.ts";
 import { Box, Heading } from "@chakra-ui/react";
 import ExpandableText from "../components/ExpandableText.tsx";
 import GameAttributes from "../components/GameAttributes.tsx";
+import GameTriller from "../components/GameTriller.tsx";
 
 const GameDetailPage = () => {
   const { id } = useParams();
@@ -16,6 +17,7 @@ const GameDetailPage = () => {
       <Heading> {data.name}</Heading>
       <ExpandableText>{data.description_raw}</ExpandableText>
       <GameAttributes game={data} />
+      <GameTriller gameId={data.id.toString()} />
     </Box>
   );
 

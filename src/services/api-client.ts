@@ -24,4 +24,10 @@ export default class APIClient<T> {
       .get<T>(this.endpoint + "/" + id)
       .then((res) => res.data);
   };
+
+  // getTrailer = async (id: string) => {
+  //   return axiosInstance
+  //     .get<T>(this.endpoint + id + "/movies")
+  //     .then((res) => res.data);
+  // };
 }
